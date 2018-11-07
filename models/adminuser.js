@@ -18,6 +18,8 @@ module.exports = mongoose.model('adminuser', {
             name: String,
             email: String,
             phone: Number,
+            short_msg:String,
             msg: String
+
 
         });
