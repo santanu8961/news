@@ -51,3 +51,5 @@ body{
     border: none;
     cursor: pointer;
 }
+
+.post-button:hover {background-color: #5f1b0f}

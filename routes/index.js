@@ -11,4 +11,9 @@ router.get('/contact_us', function(req, res, next) {
   res.render('./user/Contact_us');
 });
 
+router.post('/savepost', function(req, res, next) {
+  console.log(req.body);
+  // req.render('./user/Contact_us');
+});
+
 module.exports = router;
