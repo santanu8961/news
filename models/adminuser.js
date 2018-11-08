@@ -17,9 +17,9 @@ module.exports = mongoose.model('adminuser', {
 
             name: String,
             email: String,
-            phone: Number,
+            phone: String,
             short_msg:String,
-            msg: String
-
-
+            msg: String,
+            date:String,
+            blogtitle:String
         });

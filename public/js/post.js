@@ -7,17 +7,19 @@ function savepost(){
       var email = $('#email').val();
     var   phone = $('#phone').val();
       var msg = CKEDITOR.instances.msg.getData();
-      var short_msg = $('#short-msg').val()
+      var short_msg = $('#short-msg').val();
+      var blogtitle = $('#blogtitle').val();
 
       data = { 
         'name':name,
         'email':email,
         'phone':phone,
         'msg':msg,
-        'short_msg':short_msg
+        'short_msg':short_msg,
+        'blogtitle':blogtitle
     }
     console.log(data);
-    if(data.name ==`` || data.email==`` || data.msg==`` || data.short_msg == ``){   
+    if(data.name ==`` || data.email==`` || data.msg==`` || data.short_msg == `` || data.blogtitle == ``){   
         
         alert("Please Enter valid details!")
     }else{

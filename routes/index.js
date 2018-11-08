@@ -24,13 +24,16 @@ router.get('/single', function(req, res) {
 
 // Save data
 router.post('/savepost', function(req, res, next) {
-  console.log(req.body);
+  console.log(postdata);
+  var post_time = new Date().toJSON().slice(0,10);
   var postdata = new adminuser({
                   'name':req.body.name,
                   'phone':req.body.phone,
                   'msg':req.body.msg,
                   'short-msg':req.body.short_msg,
-                  'email':req.body.email
+                  'email':req.body.email,
+                  'date':post_time,
+                  'blogtitle':req.body.blogtitle
   });
   postdata.save(err=>{
     if(err){
