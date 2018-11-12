@@ -20,6 +20,6 @@ module.exports = mongoose.model('adminuser', {
             phone: String,
             short_msg:String,
             msg: String,
-            date:String,
+            date:Date,
             blogtitle:String
         });

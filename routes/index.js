@@ -4,7 +4,12 @@ const adminuser = require('../models/adminuser')
 
 /* GET front page. */
 router.get('/', function(req, res, next) {
-  res.render('./user/index');
+  adminuser.find((err,doc)=>{
+    console.log(doc);
+    if (err){ throw err};
+     res.render('./user/index',{'postdata':doc});
+    
+  })
 });
 
 // about us
@@ -12,15 +17,15 @@ router.get('/contact_us', function(req, res, next) {
   res.render('./user/Contact_us');
 });
 
-// single post page
-router.get('/single', function(req, res) {
-  console.log('into single');
-  adminuser.find((err,doc)=>{
-    if (err){ throw err};
-     res.render('./user/single',{'postdata':doc});
-    console.log(doc);
-  })
-});
+// // single post page 
+// router.get('/single', function(req, res) {
+//   // console.log('into single');
+//   adminuser.find((err,doc)=>{
+//     if (err){ throw err};
+//      res.render('./user/single',{'postdata':doc});
+//     console.log(doc);
+//   })
+// });
 
 // Save data
 router.post('/savepost', function(req, res, next) {
@@ -46,4 +51,20 @@ router.post('/savepost', function(req, res, next) {
   // req.render('./user/Contact_us');
 });
 
+// dynamic single-post
+router.get('/single/:_id',function(req,res,next){
+  var id = req.params._id;
+  // console.log(id);
+  adminuser.findOne({'_id':id},(err,doc)=>{
+    // console.log(doc)
+      if(err){
+          res.render('./user/single',{doc:[]});
+      } else {
+          // console.log("result inside /blog-post");
+          // console.log(doc);
+          res.render('./user/single.ejs',{'postdata':doc});
+      }
+  });
+  
+});
 module.exports = router;
